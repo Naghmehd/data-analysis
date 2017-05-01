@@ -1,0 +1,11 @@
+jupyter
+nltk
+numpy
+pandas
+PyQt5
+python-twitter
+python-dateutil
+pytz
+sip
+six
+SQLAlchemy
