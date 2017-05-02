@@ -13,11 +13,12 @@ auth.set_access_token(access_token,
 
 class PrintListener(StreamListener):
     def on_status(self, status):
-        print(status.text)
-        print(status.author.screen_name,
-              status.created_at,
-              status.source,
-              '\n')
+        if not status.text[:3] == 'RT ':
+            print(status.text)
+            print(status.author.screen_name,
+                  status.created_at,
+                  status.source,
+                  '\n')
 
     def on_error(self,status_code):
         print("Error code: {}".format(status_code))
@@ -30,7 +31,8 @@ class PrintListener(StreamListener):
 def print_to_terminal():
     listener = PrintListener()
     stream = Stream(auth, listener)
-    stream.sample()
+    languages = ('en',)
+    stream.sample(languages=languages)
 
 if __name__ == '__main__':
     print_to_terminal()
